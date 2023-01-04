@@ -1,0 +1,42 @@
+pragma solidity ^0.8.17;
+
+    /*
+     -  Constructor:
+     -  Tenant name
+     -  Tenant age
+     -  Tenant occupation
+    */
+
+contract Rent {
+
+     // Function to receive Ether. msg.data must be empty
+    receive() external payable {
+    }
+
+    // Fallback function is called when msg.data is not empty
+    fallback() external payable {}
+
+    address payable public landlordAddress;
+    string public tenantName;
+    uint public tenantAge;
+    string public tenantOccupation;
+    address payable tenant;
+    //event tenantInformation(string memory _name,uint256 _age,string memory _job);
+    event settingOwner(string name, uint256 age, string job);
+    
+
+  
+    constructor (string memory name, uint age, string memory occupation) {
+        tenantName = name;
+        tenantAge = age;
+        tenantOccupation = occupation;
+        landlordAddress = payable(msg.sender);
+        emit settingOwner(name, age,occupation );
+    }
+
+    function getBalance() public view returns (uint) {
+        return address(this).balance;
+    }
+
+   
+}
