@@ -1,4 +1,4 @@
-<div align="center">
+<div>
   
   <h2>The CrowdFunding Contract - Planning and Design<h2/>
 <ul>
